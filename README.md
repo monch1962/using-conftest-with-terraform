@@ -2,7 +2,7 @@
 Notes on how to use Conftest to validate Terraforms
 
 ## Overview
-There's plenty of resources describing how to use conftest (https://www.conftest.dev/) to validate Terraforms, however they all seem to be written at a high level for trivial Terraforms. When defining IaaS using Terraform for a large project, the process of writing conftest policies is considerably more complicated than those simple examples would have you believe.
+There's plenty of resources describing how to use conftest (https://www.conftest.dev/) to validate Terraforms, however they all seem to be written at a high level for trivial Terraforms. When defining IaaS using Terraform to create the infrastructure for a large project, the process of writing conftest policies is considerably more complicated than those simple examples would have you believe.
 
 This document goes through some of the challenges I've found, and outlines processes to address them
 
