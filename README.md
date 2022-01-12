@@ -60,3 +60,16 @@ deny[msg] {
 }
 ```
 which will look all through the `tfplan.json` file for any violations regardless of how those 2 arrays in the JSONpath have been sequenced.
+
+### Identifying what's going to be changed if you apply this Terraform plan
+
+Terraform is a declarative tool, meaning it will make the minimal changes to an environment to get it into the desired state. To identify only the changes that will be made to the current state of the environment, you can use `jq` as follows:
+- Resource changes: `cat tfplan.json | jq .resource_changes`
+- Type of resources being changed: `cat tfplan.json | jq '.resource_changes[].type'`
+- Resource action (change, create, destroy): `cat tfplan.json | jq '.resource_changes[].change.actions[]'`
+
+Full disclosure: I've lifted these commands from https://dev.to/lucassha/don-t-let-your-terraform-go-rogue-with-conftest-and-the-open-policy-agent-233b - I only repeat them here in case that page disappears at some point.
+
+These steps can come in handy if you only want to use conftest to check the changes about to be applied to the environment, rather than the entire environment. Possible reasons for doing this may be as follows:
+- you might have known non-compliant elements in your existing infrastructure, and you don't want to keep reporting those infrastructure elements as non-compliant every time you run tests. This is particularly handy if your conftest compliance checks are run as part of a CI pipeline; in this case, you might not want "known problems" to block your Terraform deployment
+- you might only be interested in ensuring _changes_ to the infrastructure are compliant. This could be the case if you're retrospectively introducing controls to existing infrastructure, with the aim of bringing that infrastructure into a compliant state over a period of time
