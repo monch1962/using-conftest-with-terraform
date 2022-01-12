@@ -17,6 +17,8 @@ $ terraform show -json ./tfplan_2_resources_planned | jq > tfplan.json
 
 This will create a `tfplan.json` file which can be checked by conftest. The following sections assume you have a `tfplan.json` file and you want to check that it complies with certain standards
 
+Note that running these commands will use an existing `.tfstate` file that describes the current infrastructure configuration if it exists. If this is the case, then `tfplan.json` will contain both `before` and `after` sections that document the changes that would be made to the infrastructure if you ran `$ terraform apply`
+
 ## Challenges
 
 ### Terraform plan JSONs don't follow a fixed schema or hierarchy, and have an arbitrary number of levels based on the complexity of the environment being built
