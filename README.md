@@ -1,4 +1,4 @@
-# Using Conftest to validate Terraform
+# Using conftest to validate Terraform
 Notes on how to use Conftest to validate Terraforms
 
 ## Overview
