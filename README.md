@@ -82,3 +82,21 @@ Full disclosure: I've lifted these commands from https://dev.to/lucassha/don-t-l
 These steps can come in handy if you only want to use conftest to check the changes about to be applied to the environment, rather than the entire environment. Possible reasons for doing this may be as follows:
 - you might have known non-compliant elements in your existing infrastructure, and you don't want to keep reporting those infrastructure elements as non-compliant every time you run tests. This is particularly handy if your conftest compliance checks are run as part of a CI pipeline; in this case, you might not want "known problems" to block your Terraform deployment
 - you might only be interested in ensuring _changes_ to the infrastructure are compliant. This could be the case if you're retrospectively introducing controls to existing infrastructure, with the aim of bringing that infrastructure into a compliant state over a period of time
+
+### Naming conventions for particular fields within Terraform (or its providers) aren't consistent
+
+To be fair, this is more likely to be a problem with Terraform providers, and as such is likely to remain a problem for the foreseeable future
+
+When I look through the `enable_key_rotation` keys inside my `tfplan.json` file, in one place I see:
+```
+"enable_key_rotation": true,
+```
+and in another place I see
+```
+"enable_key_rotation": { "constant_value": true },
+```
+
+Yes, this is inside the same `tfplan.json` file, and is yet another hurdle that needs to be addressed in your conftest checks.
+
+Once you know this problem exists, it's relatively easy to alter the check in your REGO files to account for it. However, you need to know that it exists, otherwise you might find some of your tests pass when they should be failing.
+
