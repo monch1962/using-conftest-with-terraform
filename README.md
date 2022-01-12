@@ -114,5 +114,5 @@ Bridgecrew has a bunch of interesting content that's worth checking out:
 - checking Terraforms using checkov (https://bridgecrew.io/blog/terraform-variable-evaluation/)
 
 Checkov (https://www.checkov.io/) by Bridgecrew looks like a great option; need ot investigate this further:
-- git repo https://github.com/bridgecrewio/checkov
-
+- git repo https://github.com/bridgecrewio/checkov: note this has an Apache licence which doesn't require you to release your changes
+- info about creating & contributing your own policies: https://www.checkov.io/6.Contribution/Contribute%20Python-Based%20Policies.html
