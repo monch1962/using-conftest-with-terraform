@@ -100,3 +100,19 @@ Yes, this is inside the same `tfplan.json` file, and is yet another hurdle that 
 
 Once you know this problem exists, it's relatively easy to alter the check in your REGO files to account for it. However, you need to know that it exists, otherwise you might find some of your tests pass when they should be failing.
 
+## Handy references
+
+These are some of the handy references to refer to:
+- overview of important security parameters for the AWS provider (https://faun.pub/managing-aws-best-practices-using-terraform-6c1a4fc517c4)
+- Terraform best practices for AWS users (https://github.com/ozbillwang/terraform-best-practices)
+
+Bridgecrew has a bunch of interesting content that's worth checking out:
+- https://bridgecrew.io/blog/infrastructure-security-at-scale-with-bridgecrew-for-terraform-cloud/
+- https://workshop.bridgecrew.io/terraform.html
+- https://bridgecrew.io/blog/tutorial-find-fix-and-prevent-terraform-misconfigurations-with-bridgecrew/
+- scanning Serverless framework's YAML files for security problems (https://bridgecrew.io/blog/securing-serverless-framework-configurations-for-aws-using-bridgecrew/)
+- checking Terraforms using checkov (https://bridgecrew.io/blog/terraform-variable-evaluation/)
+
+Checkov (https://www.checkov.io/) by Bridgecrew looks like a great option; need ot investigate this further:
+- git repo https://github.com/bridgecrewio/checkov
+
