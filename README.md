@@ -8,7 +8,14 @@ This document goes through some of the challenges I've found, and outlines proce
 
 ## Getting started
 
-(how to generate JSON files from Terraform plans)
+conftest wants to work with something like a JSON file, not Terraforms. To convert those Terraforms into a format that conftest can consume, run the following commands from within the directory containing your Terraform files:
+```
+$ terraform init
+$ terraform plan -out=tfplan_2_resources_planned
+$ terraform show -json ./tfplan_2_resources_planned | jq > tfplan.json
+```
+
+This will create a `tfplan.json` file which can be checked by conftest. The following sections assume you have a `tfplan.json` file and you want to check that it complies with certain standards
 
 ## Challenges
 
